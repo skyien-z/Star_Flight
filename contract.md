@@ -7,7 +7,8 @@ Communication:
 
 Collaboration
     1. Work Distribution: Each week, the necessary deliverables for the week will be determined by the full team and each member will volunteer to work on one or more deliverables. When no one volunteers, two team members will be randomly assigned the task by a random name generator. After a random duo is generated, the other duo will take over the next time that nobody volunteers for a task so we can alternate.
-    2. Time Commitment: Each member is expected to work no less than XXXXX and no more than XXXX hours per week on the project. If a deliverable ends up taking more time, the rest of the team should be pulled in to assist with the unforeseen complication.
+    2. Time Commitment: Each member is expected to work no less than 2 and no more than 6 hours per week on the project. If a deliverable ends up taking more time, the rest of the team should be pulled in to assist with the unforeseen complication.
     3. Conflict Resolution: When design conflicts arise between two members of the group, they will try to come to a compromise themselves. If a compromise is not reached, they will contact the other two members and we will try to work out the problem as an entire group. If necessary, we will appeal to the TA for advice.
 
 Signatures
+Charles Shi 4/7/21
