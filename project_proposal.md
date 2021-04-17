@@ -18,9 +18,9 @@ April 19 - clean out the data from the dataset
 
 April 21 - convert array format into graph format 
 
-April 26 - write BFS and verify with tests
+April 26 - write A* and verify with tests
 
-April 28 - write A* and verify with tests
+April 28 - write BFS and verify with tests
 
 May 5 - write graph projection onto graphical interface and verify with tests
 

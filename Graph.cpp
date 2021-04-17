@@ -7,10 +7,6 @@ Graph::Graph(const std::string& data_filename) {
     load_stars_from_csv(data_filename);
 }
 
-const std::vector<Star>& Graph::getStarList() const {
-    return node_list;
-}
-
 void Graph::load_stars_from_csv(const std::string& data_filename) {
     std::ifstream data(data_filename);
 
@@ -39,4 +35,8 @@ void Graph::load_stars_from_csv(const std::string& data_filename) {
         Star temp(id_int, proper, x_double, y_double, z_double);
         node_list.push_back(temp);        
     }
+}
+
+const std::vector<Star>& Graph::getStarList() const {
+    return node_list;
 }
