@@ -3,11 +3,15 @@
 #include <iostream>
 #include <fstream>
 
-Graph::Graph(std::string data_filename) {
-    read_csv(data_filename);
+Graph::Graph(const std::string& data_filename) {
+    load_stars_from_csv(data_filename);
 }
 
-void Graph::read_csv(std::string data_filename) {
+const std::vector<Star>& Graph::getStarList() const {
+    return node_list;
+}
+
+void Graph::load_stars_from_csv(const std::string& data_filename) {
     std::ifstream data(data_filename);
 
     while (data.good()) {
@@ -32,8 +36,7 @@ void Graph::read_csv(std::string data_filename) {
 
         //std::cout << proper << " (" << x_double << "," << y_double << "," << z_double << ")" << std::endl;
 
-        Star temp(id_int,proper,x_double,y_double,z_double);
-        node_list.push_back(temp);
-        
+        Star temp(id_int, proper, x_double, y_double, z_double);
+        node_list.push_back(temp);        
     }
 }
