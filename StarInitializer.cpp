@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <math.h>
 
 StarInitializer::StarInitializer(const std::string& data_filename, double fuel_amount) {
     fuel_amount_ = fuel_amount;
@@ -19,6 +20,9 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
 
         std::string proper;
         std::getline(data_stream, proper, ',');
+        if (proper.empty()) {
+            continue;
+        }
 
         double x; double y; double z;
 
