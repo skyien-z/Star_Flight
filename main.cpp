@@ -3,9 +3,11 @@
 #include <iostream>
 
 int main() {
-    StarInitializer graph("data.csv");
-    for (auto it : graph.getStarList()) {
-        std::cout << it.name << " (" << it.x << "," << it.y << "," << it.z << ")" << std::endl;
+    StarInitializer star_initializer("data.csv", 100000);
+    for (const Star& star : star_initializer.getStarList()) {
+        std::cout << star.GetStarName() << " (" << star.GetX() 
+        << "," << star.GetY() << "," << star.GetZ() << ")" << std::endl;
     }
-    return 1;
+
+    return 0;
 }

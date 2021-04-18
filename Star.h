@@ -1,17 +1,30 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 class Star {
   public:
     Star(int id, std::string name, double x, double y, double z);
 
-    double GetStarX() const;
-    double GetStarY() const;
-    double GetStarZ() const;
+    void AddNeighboringStar(Star* neighbor_star);
+
+    double GetX() const;
+    double GetY() const;
+    double GetZ() const;
 
     int GetStarId() const;
     const std::string& GetStarName() const;
+    const std::vector<Star*>& GetNeighboringStarsList() const;
+
+    /**
+     * @brief Checks if two stars have the same id
+     * 
+     * @param other_star 
+     * @return true if star to compare to has same id as this star
+     * @return false 
+     */
+    bool operator==(const Star& other_star) const;
 
   private:
     int id_;
@@ -19,4 +32,6 @@ class Star {
     double x_;
     double y_;
     double z_;
+
+    std::vector<Star*> neighboring_stars_;
 };
