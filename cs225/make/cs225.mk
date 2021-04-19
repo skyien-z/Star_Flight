@@ -21,13 +21,13 @@ OBJS_DIR = .objs
 DEPFILE_FLAGS = -MMD -MP
 
 # Provide lots of helpful warning/errors:
-WARNINGS = -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function
+WARNINGS = -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable
 
 # Flags for compile:
 CXXFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -O0 $(WARNINGS) $(DEPFILE_FLAGS) -g -c
 
 # Flags for linking:
-LDFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -lc++abi
+LDFLAGS += $(CS225) -std=c++1y -stdlib=libc++
 
 # Rule for `all` (first/default rule):
 all: $(EXE)
@@ -35,18 +35,15 @@ all: $(EXE)
 # Rule for linking the final executable:
 # - $(EXE) depends on all object files in $(OBJS)
 # - `patsubst` function adds the directory name $(OBJS_DIR) before every object file
-$(EXE): output_msg $(patsubst %.o, $(OBJS_DIR)/%.o, $(OBJS))
-	$(LD) $(filter-out $<, $^) $(LDFLAGS) -o $@
+$(EXE): $(patsubst %.o, $(OBJS_DIR)/%.o, $(OBJS))
+	$(LD) $^ $(LDFLAGS) -o $@
 
 # Ensure .objs/ exists:
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 	@mkdir -p $(OBJS_DIR)/cs225
 	@mkdir -p $(OBJS_DIR)/cs225/catch
-	@mkdir -p $(OBJS_DIR)/tests
-# mp_traversal specific
-	@mkdir -p $(OBJS_DIR)/imageTraversal
-	@mkdir -p $(OBJS_DIR)/colorPicker
+	@mkdir -p $(OBJS_DIR)/tests	
 
 # Rules for compiling source code.
 # - Every object file is required by $(EXE)
@@ -58,13 +55,13 @@ $(OBJS_DIR)/%.o: %.cpp | $(OBJS_DIR)
 # Rules for compiling test suite.
 # - Grab every .cpp file in tests/, compile them to .o files
 # - Build the test program w/ catchmain.cpp from cs225
-OBJS_TEST += $(filter-out $(EXE_OBJ), $(OBJS))
+OBJS_TEST = $(filter-out $(EXE_OBJ), $(OBJS))
 CPP_TEST = $(wildcard tests/*.cpp)
 CPP_TEST += cs225/catch/catchmain.cpp
 OBJS_TEST += $(CPP_TEST:.cpp=.o)
 
-$(TEST): output_msg $(patsubst %.o, $(OBJS_DIR)/%.o, $(OBJS_TEST))
-	$(LD) $(filter-out $<, $^) $(LDFLAGS) -o $@
+$(TEST): $(patsubst %.o, $(OBJS_DIR)/%.o, $(OBJS_TEST))
+	$(LD) $^ $(LDFLAGS) -o $@
 
 # Additional dependencies for object files are included in the clang++
 # generated .d files (from $(DEPFILE_FLAGS)):
@@ -73,24 +70,6 @@ $(TEST): output_msg $(patsubst %.o, $(OBJS_DIR)/%.o, $(OBJS_TEST))
 -include $(OBJS_DIR)/cs225/catch/*.d
 -include $(OBJS_DIR)/tests/*.d
 
-# Custom Clang version enforcement Makefile rule:
-ccred=$(shell echo -e "\033[0;31m")
-ccyellow=$(shell echo -e "\033[0;33m")
-ccend=$(shell echo -e "\033[0m")
-
-IS_EWS=$(shell hostname | grep "ews.illinois.edu") 
-IS_CORRECT_CLANG=$(shell clang -v 2>&1 | grep "version 6")
-ifneq ($(strip $(IS_EWS)),)
-ifeq ($(strip $(IS_CORRECT_CLANG)),)
-CLANG_VERSION_MSG = $(error $(ccred) On EWS, please run 'module load llvm/6.0.1' first when running CS225 assignments. $(ccend))
-endif
-else
-ifneq ($(strip $(SKIP_EWS_CHECK)),True)
-CLANG_VERSION_MSG = $(warning $(ccyellow) Looks like you are not on EWS. Be sure to test on EWS before the deadline. $(ccend))
-endif
-endif
-
-output_msg: ; $(CLANG_VERSION_MSG)
 
 # Standard C++ Makefile rules:
 clean:
@@ -99,4 +78,4 @@ clean:
 tidy: clean
 	rm -rf doc
 
-.PHONY: all tidy clean output_msg
+.PHONY: all tidy clean
