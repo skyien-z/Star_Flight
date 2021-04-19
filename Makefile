@@ -6,6 +6,9 @@ CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
 LD = clang++
 LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lm
 
+# Use the cs225 makefile template:
+include cs225/make/cs225.mk
+
 all : $(EXENAME)
 
 output_msg: ; $(CLANG_VERSION_MSG)
