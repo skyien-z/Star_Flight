@@ -39,7 +39,7 @@ vector<Star *> AStar::findShortestPathAStar(Star *begin, Star *end)
             {
                 parent[neighbor.first] = currentStar;
                 double neighborCost = neighbor.second + Distance(neighbor.first, end);
-                nextNodes.emplace(neighborCost, neighbor);
+                nextNodes.emplace(neighborCost, neighbor.first);
             }
         }
     }
