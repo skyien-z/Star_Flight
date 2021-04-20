@@ -19,13 +19,11 @@ double Distance(Star *current, Star *end)
 vector<Star *> AStar::findShortestPathAStar(Star *begin, Star *end)
 {
     unordered_map<Star *, Star *> parent;
-    unordered_map<Star *, double> starDistance;
     vector<Star *> finalPath;
     priority_queue<pair<double, Star *>, vector<pair<double, Star *>>, std::greater<pair<double, Star *>>> nextNodes;
 
     finalPath.push_back(begin);
     nextNodes.emplace(0.0, begin);
-    starDistance[begin] = 0.0;
 
     while (!nextNodes.empty())
     {
@@ -37,11 +35,10 @@ vector<Star *> AStar::findShortestPathAStar(Star *begin, Star *end)
         }
         for (auto neighbor : currentStar->GetNeighboringStarsList())
         {
-            if (!parent.count(neighbor))
+            if (!parent.count(neighbor.first))
             {
-                starDistance[neighbor] = starDistance[currentStar] + Distance(currentStar, neighbor);
-                parent[neighbor] = currentStar;
-                double neighborCost = starDistance[neighbor] + Distance(neighbor, end);
+                parent[neighbor.first] = currentStar;
+                double neighborCost = neighbor.second + Distance(neighbor.first, end);
                 nextNodes.emplace(neighborCost, neighbor);
             }
         }
