@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o Star.o StarInitializer.o
+OBJS = main.o Star.o StarInitializer.o AStar.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -41,14 +41,23 @@ Star.o : Star.cpp Star.h
 StarInitializer.o : StarInitializer.cpp StarInitializer.h Star.h
 	$(CXX) $(CXXFLAGS) StarInitializer.cpp
 
-test: output_msg catchmain.o StarTest.o Star.o StarInitializer.o
-	$(LD) catchmain.o StarTest.o Star.o StarInitializer.o $(LDFLAGS) -o test
+AStar.o: AStar.cpp AStar.h Star.h
+	$(CXX) $(CXXFLAGS) AStar.cpp
+
+test: output_msg catchmain.o StarTest.o StarInitializerTest.o AStarTest.o Star.o StarInitializer.o AStar.o
+	$(LD) catchmain.o StarTest.o StarInitializerTest.o AStarTest.o Star.o StarInitializer.o AStar.o $(LDFLAGS) -o test
 
 catchmain.o : cs225/catch/catchmain.cpp cs225/catch/catch.hpp
 	$(CXX) $(CXXFLAGS) cs225/catch/catchmain.cpp
 
-StarTest.o: tests/StarTest.cpp cs225/catch/catch.hpp
+StarTest.o: tests/StarTest.cpp cs225/catch/catch.hpp Star.cpp
 	$(CXX) $(CXXFLAGS) tests/StarTest.cpp
+
+StarInitializerTest.o: tests/StarInitializerTest.cpp cs225/catch/catch.hpp Star.cpp StarInitializer.cpp
+	$(CXX) $(CXXFLAGS) tests/StarInitializerTest.cpp
+
+AStarTest.o: tests/AStarTest.cpp cs225/catch/catch.hpp AStar.cpp Star.cpp
+	$(CXX) $(CXXFLAGS) tests/AStarTest.cpp
 
 clean :
 	-rm -f *.o *.d $(EXENAME) test
