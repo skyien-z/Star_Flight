@@ -1,8 +1,6 @@
 #include "StarInitializer.h"
 
 #include <iostream>
-#include <fstream>
-#include <math.h>
 
 StarInitializer::StarInitializer(const std::string& data_filename, double fuel_amount) {
     fuel_amount_ = fuel_amount;
@@ -12,6 +10,9 @@ StarInitializer::StarInitializer(const std::string& data_filename, double fuel_a
 
 void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
     std::ifstream data_stream(data_filename);
+    if (data_stream.fail()) {   
+        std::cout << "The file failed to open" << std::endl;
+    }
 
     while (data_stream.good()) {
         int id;      
@@ -35,7 +36,7 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
         data_stream >> z;
         data_stream.get();
 
-        star_list_.push_back(Star(id, proper, x, y, z));      
+        star_list_.push_back(Star(id, proper, x, y, z));
     }
 }
 

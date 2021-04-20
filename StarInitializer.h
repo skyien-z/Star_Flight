@@ -4,6 +4,8 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
+#include <math.h>
 
 class StarInitializer {
   public:
