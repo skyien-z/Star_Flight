@@ -13,7 +13,6 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
     if (data_stream.fail()) {   
         std::cout << "The file failed to open" << std::endl;
     }
-
     while (data_stream.good()) {
         int id;      
         data_stream >> id;
@@ -24,7 +23,6 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
         if (proper.empty()) {
             continue;
         }
-
         double x; double y; double z;
 
         data_stream >> x;
