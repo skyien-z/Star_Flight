@@ -50,7 +50,7 @@ void StarInitializer::AddStarNeighborsToStarObjects() {
             double distance_apart = GetDistanceBetweenStars(this_star, star_to_compare);
 
             if (distance_apart <= fuel_amount_) {
-                this_star.AddNeighboringStar(&star_to_compare);
+                this_star.AddNeighboringStar(&star_to_compare, distance_apart);
             }
         }
     }

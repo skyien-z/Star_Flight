@@ -7,7 +7,7 @@ class Star {
   public:
     Star(int id, std::string name, double x, double y, double z);
 
-    void AddNeighboringStar(Star* neighbor_star);
+    void AddNeighboringStar(Star* neighbor_star, double distance_between_stars);
 
     double GetX() const;
     double GetY() const;
@@ -15,7 +15,7 @@ class Star {
 
     int GetStarId() const;
     const std::string& GetStarName() const;
-    const std::vector<Star*>& GetNeighboringStarsList() const;
+    const std::vector<std::pair<Star*, double> >& GetNeighboringStarsList() const;
 
     /**
      * @brief Checks if two stars have the same id
@@ -33,5 +33,7 @@ class Star {
     double y_;
     double z_;
 
-    std::vector<Star*> neighboring_stars_;
+    // Vector of pairs: each pair has a star pointer and the 
+    // distance between the other star and this star
+    std::vector<std::pair<Star*, double> > neighboring_stars_;
 };

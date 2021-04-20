@@ -27,10 +27,10 @@ bool Star::operator==(const Star& other_star) const {
     return id_ == other_star.GetStarId();
 }
 
-const std::vector<Star*>& Star::GetNeighboringStarsList() const {
+const std::vector<std::pair<Star*, double> >& Star::GetNeighboringStarsList() const {
     return neighboring_stars_;
 }
 
-void Star::AddNeighboringStar(Star* neighbor_star) {
-    neighboring_stars_.push_back(neighbor_star);
+void Star::AddNeighboringStar(Star* neighbor_star, double distance_between_stars) {
+    neighboring_stars_.push_back(std::make_pair(neighbor_star, distance_between_stars));
 }
