@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o Star.o StarInitializer.o AStar.o
+OBJS = main.o Star.o StarInitializer.o AStar.o bfs.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -43,6 +43,9 @@ StarInitializer.o : StarInitializer.cpp StarInitializer.h Star.h
 
 AStar.o: AStar.cpp AStar.h Star.h
 	$(CXX) $(CXXFLAGS) AStar.cpp
+
+bfs.o: bfs.cpp bfs.h Star.h
+	$(CXX) $(CXXFLAGS) bfs.cpp
 
 test: output_msg catchmain.o StarTest.o StarInitializerTest.o AStarTest.o Star.o StarInitializer.o AStar.o
 	$(LD) catchmain.o StarTest.o StarInitializerTest.o AStarTest.o Star.o StarInitializer.o AStar.o $(LDFLAGS) -o test
