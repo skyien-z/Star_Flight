@@ -61,4 +61,7 @@ Week 2:
         To do next meeting (a weekend day because of scheduling conflicts):
             1. Determine our next steps (if we are going to plot lines or not)
             2. Implement main function
-            3. Write ReadMe.md
+
+            Future Goals:
+                3. Write ReadMe.md
+                4. Comment each class and function
