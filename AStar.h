@@ -1,7 +1,8 @@
 #include "Star.h"
 #include <vector>
+#include <string>
 
 class AStar {
     public:
-        std::vector<Star*> findShortestPathAStar(Star* begin, Star* end);
+        std::vector<std::string> findShortestPathAStar(Star* begin, Star* end);
 };
