@@ -47,8 +47,8 @@ AStar.o: AStar.cpp AStar.h Star.h
 BFS.o: BFS.cpp BFS.h Star.h
 	$(CXX) $(CXXFLAGS) BFS.cpp
 
-test: output_msg catchmain.o StarTest.o StarInitializerTest.o AStarTest.o BFSTest.o Star.o StarInitializer.o AStar.o
-	$(LD) catchmain.o StarTest.o StarInitializerTest.o AStarTest.o BFSTest.o Star.o StarInitializer.o AStar.o $(LDFLAGS) -o test
+test: output_msg catchmain.o StarTest.o StarInitializerTest.o AStarTest.o BFSTest.o Star.o StarInitializer.o AStar.o BFS.o
+	$(LD) catchmain.o StarTest.o StarInitializerTest.o AStarTest.o BFSTest.o Star.o StarInitializer.o AStar.o BFS.o $(LDFLAGS) -o test
 
 catchmain.o : cs225/catch/catchmain.cpp cs225/catch/catch.hpp
 	$(CXX) $(CXXFLAGS) cs225/catch/catchmain.cpp
