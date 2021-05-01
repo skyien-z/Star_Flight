@@ -9,5 +9,5 @@ class BFS {
 
         std::vector<Star*> GraphTraversal(const std::vector<Star> nodeList); // call bfs small on every vertex
 
-        bool canTravel(Star* start, Star* end);
+        bool canTravel(Star* start, Star* end); //check if there is a path between two stars
 };
