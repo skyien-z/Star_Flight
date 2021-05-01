@@ -40,6 +40,7 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
 
 void StarInitializer::AddStarNeighborsToStarObjects() {
     for (Star& this_star : star_list_) {
+        name_to_star_ptr[this_star.GetStarName()] = &this_star;
         for (Star& star_to_compare : star_list_) {
 
             if (this_star == star_to_compare) {
@@ -67,4 +68,8 @@ double StarInitializer::GetDistanceBetweenStars(
 
 const std::vector<Star>& StarInitializer::getStarList() const {
     return star_list_;
+}
+
+const std::unordered_map<std::string, Star*> StarInitializer::GetNameToStarPtr() {
+    return name_to_star_ptr;
 }
