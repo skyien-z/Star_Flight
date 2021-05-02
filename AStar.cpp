@@ -21,6 +21,7 @@ double Distance(Star *current, Star *end)
 vector<string> AStar::findShortestPathAStar(Star *begin, Star *end)
 {
     unordered_map<string, string> parent;
+    
     vector<string> finalPath;
     priority_queue<pair<double, Star *>, vector<pair<double, Star *>>, std::greater<pair<double, Star *>>> nextNodes;
 
