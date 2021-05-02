@@ -38,7 +38,7 @@ class Visualizer {
         
         void Create2DPNG(PNG* png_to_initialize);
 
-        void DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val, int size, bool is_in_astar_path);
+        void DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val, int radius, bool is_in_astar_path);
         void ColorPixelBlack(HSLAPixel & pixel);
         void ColorPixelGreen(HSLAPixel & pixel);
 };

@@ -5,16 +5,16 @@
 #include <iostream>
 
 int main() {
-    StarInitializer star_initializer("data.csv", 10);
+    StarInitializer star_initializer("data.csv", 50);
     // for (const Star& star : star_initializer.getStarList()) {
     //     std::cout << star.GetStarName() << " (" << star.GetX() 
     //     << "," << star.GetY() << "," << star.GetZ() << ")" << std::endl;
     // }
 
     std::vector<Star> starList = star_initializer.getStarList();
-    BFS bfs;
-    std::vector<Star*> fullTraversal = bfs.GraphTraversal(starList);
-    std::cout << fullTraversal.size() << std::endl;
+    // BFS bfs;
+    // std::vector<Star*> fullTraversal = bfs.GraphTraversal(starList);
+    // std::cout << fullTraversal.size() << std::endl;
 
     AStar astar;
     std::vector<std::string> names = astar.findShortestPathAStar(&starList[0], &starList[100]);
@@ -27,7 +27,7 @@ int main() {
 
     Visualizer test_visualizer(star_ptr_list, names);
 
-    cs225::PNG* png_ptr = test_visualizer.GetXYSizeZ(1);
+    cs225::PNG* png_ptr = test_visualizer.GetXYSizeZ(2);
     png_ptr->writeToFile("test.png");
 
     return 0;

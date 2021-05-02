@@ -33,8 +33,8 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
         int PNG_X = png_axis.first;
         int PNG_Y = png_axis.second;
 
-        if (PNG_X >= EDGE_ || PNG_X <= 0 ||
-            PNG_Y >= EDGE_ || PNG_Y <= 0) {
+        if (PNG_X >= EDGE_ || PNG_X < 0 ||
+            PNG_Y >= EDGE_ || PNG_Y < 0) {
             continue;
         }
 
@@ -54,7 +54,8 @@ PNG* Visualizer::GetXZSizeY(double multiplier) {
         int PNG_X = png_axis.first;
         int PNG_Z = png_axis.second;
 
-        if (PNG_X > EDGE_ || PNG_Z > EDGE_) {
+        if (PNG_X >= EDGE_ || PNG_X < 0 ||
+            PNG_Z >= EDGE_ || PNG_Z < 0) {
             continue;
         }
 
@@ -74,7 +75,8 @@ PNG* Visualizer::GetYZSizeX(double multiplier) {
         int PNG_Y = png_axis.first;
         int PNG_Z = png_axis.second;
 
-        if (PNG_Y > EDGE_ || PNG_Z > EDGE_) {
+        if (PNG_Y >= EDGE_ || PNG_Y < 0 ||
+            PNG_Z >= EDGE_ || PNG_Z < 0) {
             continue;
         }  
 
@@ -91,9 +93,8 @@ Visualizer::~Visualizer() {
 }
 
 void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val,
- int size, bool is_in_astar_path) {
+ int radius, bool is_in_astar_path) {
     // @TODO edge case of x at edge of image
-    int radius = size % 10;    // make the max radius size 10
     for (int x = x_axis_png_val - radius; x < x_axis_png_val + radius; x++) {
         if (is_in_astar_path) {
             ColorPixelGreen(star_ptr->getPixel(x, y_axis_png_val));
