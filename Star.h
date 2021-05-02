@@ -5,8 +5,23 @@
 
 class Star {
   public:
+  /**
+   * @brief Construct a new Star object
+   * 
+   * @param id Star ID
+   * @param name Name of Star
+   * @param x Cartesian x coordinate
+   * @param y Cartesian y coordinate
+   * @param z Cartesian z coordinate
+   */
     Star(int id, std::string name, double x, double y, double z);
 
+    /**
+     * @brief Add stars that neighbor this star to this neighboring list.
+     * 
+     * @param neighbor_star star ptr which to add to the neighbors list
+     * @param distance_between_stars 
+     */
     void AddNeighboringStar(Star* neighbor_star, double distance_between_stars);
 
     double GetX() const;
