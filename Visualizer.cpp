@@ -1,12 +1,15 @@
 #include "Visualizer.h"
 
-Visualizer::Visualizer(const std::unordered_map<std::string, Star*>& name_to_star_ptr, 
-                       const std::vector<Star*>& stars, 
-                       const std::vector<std::string>& names_in_path) : name_to_star_ptr_(name_to_star_ptr),
-                       stars_(stars), names_in_path_(names_in_path) {
+Visualizer::Visualizer(const std::vector<Star*>& stars, 
+                       const std::vector<std::string>& names_in_path) :
+                       stars_(stars) {
     XY_size_Z_ = new PNG(EDGE_, EDGE_);
     XZ_size_Y_ = new PNG(EDGE_, EDGE_);
     YZ_size_X_ = new PNG(EDGE_, EDGE_);
+
+    for (const string & name: names_in_path) {
+        name_in_path_map_[name] = true;
+    }
 }
 
 void Visualizer::CreateSnapshot(double multiplier) {
@@ -22,53 +25,60 @@ std::pair<int, int> Visualizer::CartesianToPNGCoordinates(int x, int y) {
 
 PNG* Visualizer::GetXYSizeZ(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
-        int PNG_X = stars_[i]->GetX() * multiplier;
-        int PNG_Y = stars_[i]->GetY() * multiplier;
-        int PNG_Z = stars_[i]->GetZ() * multiplier;
+        int scaled_x = stars_[i]->GetX() * multiplier;
+        int scaled_y = stars_[i]->GetY() * multiplier;
+        int size = std::log(std::abs(stars_[i]->GetZ()) * multiplier;
+
+        std::pair<int, int> png_axis = CartesianToPNGCoordinates(scaled_x, scaled_y);
+        int PNG_X = png_axis.first;
+        int PNG_Y = png_axis.second;
 
         if (PNG_X > EDGE_ || PNG_Y > EDGE_) {
             continue;
         }
 
-        bool star_in_path = isStarInPath(stars_[i]->GetStarName());
-        DrawStar(XY_size_Z_, PNG_X, PNG_Y, PNG_Z, star_in_path);
+        bool star_in_path = name_in_path_map_[stars_[i]->GetStarName()];
+        DrawStar(XY_size_Z_, PNG_X, PNG_Y, size, star_in_path);
     }
     return XY_size_Z_;
 }
 
-bool Visualizer::isStarInPath(const string& star_name) {
-    return (std::find(names_in_path_.begin(), names_in_path_.end(),
-     star_name) != names_in_path_.end());
-}
-
 PNG* Visualizer::GetXZSizeY(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
-        int PNG_X = stars_[i]->GetX() * multiplier;
-        int PNG_Y = stars_[i]->GetY() * multiplier;
-        int PNG_Z = stars_[i]->GetZ() * multiplier;
+        int scaled_x = stars_[i]->GetX() * multiplier;
+        int size = std::log(std::abs(stars_[i]->GetY()) * multiplier;
+        int scaled_z = stars_[i]->GetZ() * multiplier;
+
+        std::pair<int, int> png_axis = CartesianToPNGCoordinates(scaled_x, scaled_z);
+        int PNG_X = png_axis.first;
+        int PNG_Z = png_axis.second;
 
         if (PNG_X > EDGE_ || PNG_Z > EDGE_) {
             continue;
         }
 
-        bool star_in_path = isStarInPath(stars_[i]->GetStarName());
-        DrawStar(XZ_size_Y_, PNG_X, PNG_Z, PNG_Y, star_in_path);
+        bool star_in_path = name_in_path_map_[stars_[i]->GetStarName()];
+        DrawStar(XZ_size_Y_, PNG_X, PNG_Z, size, star_in_path);
     }
     return XZ_size_Y_;
 }
 
 PNG* Visualizer::GetYZSizeX(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
-        int PNG_X = stars_[i]->GetX() * multiplier;
-        int PNG_Y = stars_[i]->GetY() * multiplier;
-        int PNG_Z = stars_[i]->GetZ() * multiplier;
+        int size = std::log(std::abs(stars_[i]->GetX())) * multiplier;
+        int scaled_y = stars_[i]->GetY() * multiplier;
+        int scaled_z = stars_[i]->GetZ() * multiplier;
+
+        std::pair<int, int> png_axis = CartesianToPNGCoordinates(scaled_y, scaled_z);
+        int PNG_Y = png_axis.first;
+        int PNG_Z = png_axis.second;
 
         if (PNG_Y > EDGE_ || PNG_Z > EDGE_) {
             continue;
         }  
 
-        bool star_in_path = isStarInPath(stars_[i]->GetStarName());
-        DrawStar(XZ_size_Y_, PNG_Y, PNG_X, PNG_Z, star_in_path);  
+        bool star_in_path = name_in_path_map_[stars_[i]->GetStarName()];
+        DrawStar(YZ_size_X_, PNG_Y, PNG_X, size, star_in_path);  
     }
     return YZ_size_X_;
 }
