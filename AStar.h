@@ -1,6 +1,7 @@
 #include "Star.h"
 #include <vector>
 #include <string>
+#pragma once
 
 class AStar {
     public:

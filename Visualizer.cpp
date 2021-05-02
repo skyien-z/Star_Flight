@@ -13,12 +13,12 @@ Visualizer::Visualizer(const std::vector<Star*>& stars,
 }
 
 void Visualizer::CreateSnapshot(double multiplier) {
-
+    multiplier += 2;
 }
 
 // (0, 0) in Cartesian is (EDGE_/2, EDGE_/2)
 std::pair<int, int> Visualizer::CartesianToPNGCoordinates(int x, int y) {
-    int origin = (EDGE_/2, EDGE_/2);
+    int origin = EDGE_/2;
 
     return std::make_pair(origin + x, origin + y);
 }
@@ -27,7 +27,7 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
         int scaled_x = stars_[i]->GetX() * multiplier;
         int scaled_y = stars_[i]->GetY() * multiplier;
-        int size = std::log(std::abs(stars_[i]->GetZ()) * multiplier;
+        int size = std::log(std::abs(stars_[i]->GetZ())) * multiplier;
 
         std::pair<int, int> png_axis = CartesianToPNGCoordinates(scaled_x, scaled_y);
         int PNG_X = png_axis.first;
@@ -46,7 +46,7 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
 PNG* Visualizer::GetXZSizeY(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
         int scaled_x = stars_[i]->GetX() * multiplier;
-        int size = std::log(std::abs(stars_[i]->GetY()) * multiplier;
+        int size = std::log(std::abs(stars_[i]->GetY())) * multiplier;
         int scaled_z = stars_[i]->GetZ() * multiplier;
 
         std::pair<int, int> png_axis = CartesianToPNGCoordinates(scaled_x, scaled_z);
@@ -78,7 +78,7 @@ PNG* Visualizer::GetYZSizeX(double multiplier) {
         }  
 
         bool star_in_path = name_in_path_map_[stars_[i]->GetStarName()];
-        DrawStar(YZ_size_X_, PNG_Y, PNG_X, size, star_in_path);  
+        DrawStar(YZ_size_X_, PNG_Y, PNG_Z, size, star_in_path);  
     }
     return YZ_size_X_;
 }

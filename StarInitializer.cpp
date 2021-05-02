@@ -40,7 +40,6 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
 
 void StarInitializer::AddStarNeighborsToStarObjects() {
     for (Star& this_star : star_list_) {
-        name_to_star_ptr[this_star.GetStarName()] = &this_star;
         for (Star& star_to_compare : star_list_) {
 
             if (this_star == star_to_compare) {

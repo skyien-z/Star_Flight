@@ -22,6 +22,8 @@ class Visualizer {
         
         PNG* GetYZSizeX(double multiplier);
 
+        ~Visualizer();
+
   private: 
         std::vector<Star*> stars_;
         std::unordered_map<std::string, bool> name_in_path_map_;
@@ -35,7 +37,6 @@ class Visualizer {
         std::pair<int, int> CartesianToPNGCoordinates(int x, int y);
         
         void Create2DPNG(PNG* png_to_initialize);
-        ~Visualizer();
 
         void DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val, int size, bool is_in_astar_path);
         void ColorPixelBlack(HSLAPixel & pixel);

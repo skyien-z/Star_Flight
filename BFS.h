@@ -1,7 +1,7 @@
 #include "Star.h"
 #include <vector>
 #include <unordered_set>
-
+#pragma once
 
 class BFS {
     public:

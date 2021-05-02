@@ -44,6 +44,5 @@ class StarInitializer {
     void AddStarNeighborsToStarObjects();
 
     std::vector<Star> star_list_;
-    std::unordered_map<std::string, Star*> name_to_star_ptr;
     double fuel_amount_;
 };

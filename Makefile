@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o Star.o StarInitializer.o AStar.o BFS.o Visualizer.o
+OBJS = main.o Star.o StarInitializer.o AStar.o BFS.o Visualizer.o PNG.o HSLAPixel.o lodepng.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -32,7 +32,7 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME) : output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o : main.cpp StarInitializer.h Star.h BFS.h
+main.o : main.cpp StarInitializer.h Star.h BFS.h Visualizer.h cs225/HSLAPixel.h cs225/PNG.h cs225/lodepng/lodepng.h
 	$(CXX) $(CXXFLAGS) main.cpp
 
 Star.o : Star.cpp Star.h
@@ -41,7 +41,7 @@ Star.o : Star.cpp Star.h
 StarInitializer.o : StarInitializer.cpp StarInitializer.h Star.h
 	$(CXX) $(CXXFLAGS) StarInitializer.cpp
 
-Visualizer.o : Visualizer.cpp Visualizer.h cs225/PNG.h HSLAPixel.h
+Visualizer.o : Visualizer.cpp Visualizer.h cs225/PNG.h cs225/HSLAPixel.h
 	$(CXX) $(CXXFLAGS) Visualizer.cpp
 
 AStar.o: AStar.cpp AStar.h Star.h
@@ -67,6 +67,15 @@ AStarTest.o: tests/AStarTest.cpp cs225/catch/catch.hpp AStar.cpp Star.cpp
 
 BFSTest.o: tests/BFSTest.cpp cs225/catch/catch.hpp BFS.cpp StarInitializer.cpp 
 	$(CXX) $(CXXFLAGS) tests/BFSTest.cpp
+
+PNG.o : cs225/PNG.cpp cs225/PNG.h cs225/HSLAPixel.h cs225/lodepng/lodepng.h
+	$(CXX) $(CXXFLAGS) cs225/PNG.cpp
+
+HSLAPixel.o : cs225/HSLAPixel.cpp cs225/HSLAPixel.h
+	$(CXX) $(CXXFLAGS) cs225/HSLAPixel.cpp
+
+lodepng.o : cs225/lodepng/lodepng.cpp cs225/lodepng/lodepng.h
+	$(CXX) $(CXXFLAGS) cs225/lodepng/lodepng.cpp
 
 clean :
 	-rm -f *.o *.d $(EXENAME) test
