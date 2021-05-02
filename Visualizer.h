@@ -41,4 +41,6 @@ class Visualizer {
         ~Visualizer();
 
         void DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val, int size, bool is_in_astar_path);
+        void ColorPixelBlack(HSLAPixel & pixel);
+        void ColorPixelGreen(HSLAPixel & pixel);
 };

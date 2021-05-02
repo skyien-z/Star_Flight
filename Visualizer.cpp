@@ -25,44 +25,50 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
         int PNG_X = stars_[i]->GetX() * multiplier;
         int PNG_Y = stars_[i]->GetY() * multiplier;
         int PNG_Z = stars_[i]->GetZ() * multiplier;
+
         if (PNG_X > EDGE_ || PNG_Y > EDGE_) {
             continue;
         }
 
         bool star_in_path = isStarInPath(stars_[i]->GetStarName());
-
-        star_in_path ? DrawStar(XY_size_Z_, PNG_X, PNG_Y, PNG_Z, true)
-                     : DrawStar(XY_size_Z_, PNG_X, PNG_Y, PNG_Z, false);
+        DrawStar(XY_size_Z_, PNG_X, PNG_Y, PNG_Z, star_in_path);
     }
     return XY_size_Z_;
 }
 
 bool Visualizer::isStarInPath(const string& star_name) {
-    // Star* this_star_ptr = name_to_star_ptr_[star_name];
-    // if (this_star_ptr == nullptr) {
-    //     return false;
-    // }
-
     return (std::find(names_in_path_.begin(), names_in_path_.end(),
      star_name) != names_in_path_.end());
 }
 
 PNG* Visualizer::GetXZSizeY(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
-        if (stars_[i]->GetX() * multiplier > EDGE_ ||
-            stars_[i]->GetZ() * multiplier > EDGE_) {
+        int PNG_X = stars_[i]->GetX() * multiplier;
+        int PNG_Y = stars_[i]->GetY() * multiplier;
+        int PNG_Z = stars_[i]->GetZ() * multiplier;
+
+        if (PNG_X > EDGE_ || PNG_Z > EDGE_) {
             continue;
-        }       
+        }
+
+        bool star_in_path = isStarInPath(stars_[i]->GetStarName());
+        DrawStar(XZ_size_Y_, PNG_X, PNG_Z, PNG_Y, star_in_path);
     }
     return XZ_size_Y_;
 }
 
 PNG* Visualizer::GetYZSizeX(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
-        if (stars_[i]->GetY() * multiplier > EDGE_ ||
-            stars_[i]->GetZ() * multiplier > EDGE_) {
+        int PNG_X = stars_[i]->GetX() * multiplier;
+        int PNG_Y = stars_[i]->GetY() * multiplier;
+        int PNG_Z = stars_[i]->GetZ() * multiplier;
+
+        if (PNG_Y > EDGE_ || PNG_Z > EDGE_) {
             continue;
-        }       
+        }  
+
+        bool star_in_path = isStarInPath(stars_[i]->GetStarName());
+        DrawStar(XZ_size_Y_, PNG_Y, PNG_X, PNG_Z, star_in_path);  
     }
     return YZ_size_X_;
 }
@@ -72,3 +78,38 @@ Visualizer::~Visualizer() {
     delete XZ_size_Y_;
     delete YZ_size_X_;
 }
+
+void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val,
+ int size, bool is_in_astar_path) {
+    // @TODO edge case of x at edge of image
+    int radius = size % 10;    // make the max radius size 10
+    for (int x = x_axis_png_val - radius; x < x_axis_png_val + radius; x++) {
+        if (is_in_astar_path) {
+            ColorPixelGreen(star_ptr->getPixel(x, y_axis_png_val));
+        } else {
+            ColorPixelBlack(star_ptr->getPixel(x, y_axis_png_val));
+        }
+    }
+
+    for (int y = y_axis_png_val - radius; y < y_axis_png_val + radius; y++) {
+        if (is_in_astar_path) {
+        ColorPixelGreen(star_ptr->getPixel(x_axis_png_val, y));
+        } else {
+            ColorPixelBlack(star_ptr->getPixel(x_axis_png_val, y));
+        }
+    }
+ }
+
+ void Visualizer::ColorPixelBlack(HSLAPixel & pixel) {
+    pixel.h = 0;
+    pixel.s = 0;
+    pixel.l = 0;
+    pixel.a = 1;
+ }
+
+ void Visualizer::ColorPixelGreen(HSLAPixel & pixel) {
+    pixel.h = 120;
+    pixel.s = 1;
+    pixel.l = 0.5;
+    pixel.a = 0.9;
+ }
