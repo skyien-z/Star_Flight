@@ -5,7 +5,7 @@
 #include <iostream>
 
 int main() {
-    StarInitializer star_initializer("data.csv", 100000);
+    StarInitializer star_initializer("data.csv", 10);
     // for (const Star& star : star_initializer.getStarList()) {
     //     std::cout << star.GetStarName() << " (" << star.GetX() 
     //     << "," << star.GetY() << "," << star.GetZ() << ")" << std::endl;
@@ -18,8 +18,10 @@ int main() {
 
     AStar astar;
     std::vector<std::string> names = astar.findShortestPathAStar(&starList[0], &starList[100]);
+    std::cout<<names.size()<<std::endl;
+
     std::vector<Star*> star_ptr_list;
-    for (const Star& star: starList) {
+    for (Star& star: starList) {
         star_ptr_list.push_back(&star);
     }
 

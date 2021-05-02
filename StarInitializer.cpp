@@ -68,7 +68,3 @@ double StarInitializer::GetDistanceBetweenStars(
 const std::vector<Star>& StarInitializer::getStarList() const {
     return star_list_;
 }
-
-const std::unordered_map<std::string, Star*> StarInitializer::GetNameToStarPtr() {
-    return name_to_star_ptr;
-}

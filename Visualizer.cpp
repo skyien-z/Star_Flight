@@ -33,7 +33,8 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
         int PNG_X = png_axis.first;
         int PNG_Y = png_axis.second;
 
-        if (PNG_X > EDGE_ || PNG_Y > EDGE_) {
+        if (PNG_X >= EDGE_ || PNG_X <= 0 ||
+            PNG_Y >= EDGE_ || PNG_Y <= 0) {
             continue;
         }
 
