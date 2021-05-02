@@ -17,11 +17,11 @@ class Visualizer {
         // allow user to choose how "zoomed-in" they want their perspective of the stars to be
         void CreateSnapshot(double multiplier);
 
-        PNG* GetXYSizeZ();
+        PNG* GetXYSizeZ(double multiplier);
 
-        PNG* GetXZSizeY();
+        PNG* GetXZSizeY(double multiplier);
         
-        PNG* GetYZSizeX();
+        PNG* GetYZSizeX(double multiplier);
 
   private: 
         std::unordered_map<std::string, Star*> name_to_star_ptr_;
@@ -32,10 +32,13 @@ class Visualizer {
         PNG* XZ_size_Y_;
         PNG* YZ_size_X_;
 
-        static const int WIDTH_ = 500;
-        static const int  LENGTH_ = 500;
+        static const int EDGE_ = 1000;
 
         std::pair<int, int> CartesianToPNGCoordinates(int x, int y);
-
+        bool isStarInPath(const string& star_name);
+        
+        void Create2DPNG(PNG* png_to_initialize);
         ~Visualizer();
+
+        void DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val, int size, bool is_in_astar_path);
 };
