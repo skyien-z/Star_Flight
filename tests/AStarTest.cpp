@@ -3,7 +3,7 @@
 #include "../cs225/catch/catch.hpp"
 
 TEST_CASE("Testing A* Small", "[weight=1]") {
-  StarInitializer test_initializer("/Users/charlesshi/kpate360-kyliez2-shi46-srirams5/test_data/test_data_small.csv", 50);
+  StarInitializer test_initializer("test_data/test_data_small.csv", 50);
   std::vector<Star> loaded_stars = test_initializer.getStarList();
   AStar aStar;
   std::vector<std::string> shortest_path = aStar.findShortestPathAStar(&loaded_stars[0], &loaded_stars[2]);
@@ -12,7 +12,7 @@ TEST_CASE("Testing A* Small", "[weight=1]") {
 }
 
 TEST_CASE("Testing A* Medium", "[weight=1]") {
-  StarInitializer test_initializer("/Users/charlesshi/kpate360-kyliez2-shi46-srirams5/test_data/test_data_med.csv", 40);
+  StarInitializer test_initializer("test_data/test_data_med.csv", 40);
   std::vector<Star> loaded_stars = test_initializer.getStarList();
   AStar aStar;
   std::vector<std::string> shortest_path = aStar.findShortestPathAStar(&loaded_stars[0], &loaded_stars[2]);
@@ -21,7 +21,7 @@ TEST_CASE("Testing A* Medium", "[weight=1]") {
 }
 
 TEST_CASE("Testing A* Large", "[weight=1]") {
-  StarInitializer test_initializer("/Users/charlesshi/kpate360-kyliez2-shi46-srirams5/test_data/test_data_large.csv", 37);
+  StarInitializer test_initializer("test_data/test_data_large.csv", 37);
   std::vector<Star> loaded_stars = test_initializer.getStarList();
   AStar aStar;
   std::vector<std::string> shortest_path = aStar.findShortestPathAStar(&loaded_stars[0], &loaded_stars[7]);
