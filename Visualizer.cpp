@@ -115,7 +115,7 @@ void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val
  void Visualizer::ColorPixelBlack(HSLAPixel & pixel) {
     pixel.h = 0;
     pixel.s = 0;
-    pixel.l = 0;
+    pixel.l = 1;
     pixel.a = 1;
  }
 

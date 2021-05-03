@@ -13,7 +13,7 @@ namespace cs225 {
   HSLAPixel::HSLAPixel() {
     h = 0;
     s = 0;
-    l = 1.0;
+    l = 0;
     a = 1.0;
   }
 

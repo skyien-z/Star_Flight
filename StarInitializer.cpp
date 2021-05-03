@@ -79,19 +79,30 @@ StarInitializer::~StarInitializer() {
     }
 }
 
-
-StarInitializer::StarInitializer(const StarInitializer& other_star_initializer) {
+void StarInitializer::__copy(const StarInitializer& other_star_initializer) {
     fuel_amount_ = other_star_initializer.fuel_amount_;
 
     std::vector<Star*> other_stars = other_star_initializer.star_list_;
-    for (int i = 0; i < other_stars.size(); i++) {
+    for (unsigned i = 0; i < other_stars.size(); i++) {
         Star* new_star_ptr = new Star(other_stars[i]->GetStarId(), other_stars[i]->GetStarName(),
         other_stars[i]->GetX(), other_stars[i]->GetY(), other_stars[i]->GetZ());
 
         star_list_.push_back(new_star_ptr);
     }
 
-    AddStarNeighborsToStarObjects();
+    AddStarNeighborsToStarObjects();    
 }
 
-void StarInitializer::operator=(const StarInitializer& other_star_initializer);
+StarInitializer::StarInitializer(const StarInitializer& other_star_initializer) {
+    __copy(other_star_initializer);
+}
+
+void StarInitializer::operator=(const StarInitializer& other_star_initializer) {
+    for (Star*& star: star_list_) {
+        delete star;
+    }
+
+    star_list_.clear();
+    name_to_star_ptr.clear();
+    __copy(other_star_initializer);
+}
