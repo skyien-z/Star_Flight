@@ -78,10 +78,10 @@ Week 3:
 
         To do for the next meeting:
             1. Polish up Visualizer implementation and design (Charles and Kylie)
-            2. 
+            2. Start up the write-up (ReadMe.md and 2 page explanation) (Sriram and Keesan)
+            3. Write up comments for AStar (Charles)
+            4. Write comments for Visualizer (Kylie)
 
             Future Goals:
-                1. Write ReadMe.md
-                2. Comment each class and function/Code review stuff
-                3. 2 page presentation (probably drawing same infor from ReadMe)
-                4. Organize Presentation and take video
+                1. Comment each class and function/Code review stuff
+                2. Organize Presentation and take video

@@ -21,6 +21,8 @@ class StarInitializer {
     const std::vector<Star*>& getStarList() const;
     const std::unordered_map<std::string, Star*> GetNameToStarPtr();
 
+    const std::unordered_map<std::string, Star*> GetNameToStarPtr();
+
   private:
     /**
      * @brief Load stars from the CSV
@@ -45,4 +47,5 @@ class StarInitializer {
 
     std::vector<Star*> star_list_;
     double fuel_amount_;
+    std::unordered_map<std::string, Star*> name_to_star_ptr;
 };
