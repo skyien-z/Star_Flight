@@ -34,37 +34,36 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
         data_stream >> z;
         data_stream.get();
 
-        star_list_.push_back(Star(id, proper, x, y, z));
+        star_list_.push_back(&Star(id, proper, x, y, z));
     }
 }
 
 void StarInitializer::AddStarNeighborsToStarObjects() {
-    for (Star& this_star : star_list_) {
-        for (Star& star_to_compare : star_list_) {
+    for (Star* this_star : star_list_) {
+        for (Star* star_to_compare : star_list_) {
 
-            if (this_star == star_to_compare) {
+            if (*this_star == *star_to_compare) {
                 continue;       // Prevents star from adding itself as a neighbor
             }
 
             double distance_apart = GetDistanceBetweenStars(this_star, star_to_compare);
 
             if (distance_apart <= fuel_amount_) {
-                this_star.AddNeighboringStar(&star_to_compare, distance_apart);
+                this_star->AddNeighboringStar(&star_to_compare, distance_apart);
             }
         }
     }
 }
 
-double StarInitializer::GetDistanceBetweenStars(
-    const Star& star_1, const Star& star_2) const {
-    double delta_x = pow(star_1.GetX() - star_2.GetX(), 2);
-    double delta_y = pow(star_1.GetY() - star_2.GetY(), 2);
-    double delta_z = pow(star_1.GetZ() - star_2.GetZ(), 2); 
+double StarInitializer::GetDistanceBetweenStars(Star*& star_1, Star*& star_2) const {
+    double delta_x = pow(star_1->GetX() - star_2->GetX(), 2);
+    double delta_y = pow(star_1->GetY() - star_2->GetY(), 2);
+    double delta_z = pow(star_1->GetZ() - star_2->GetZ(), 2); 
 
     return sqrt(delta_x + delta_y + delta_z);
 }
 
 
-const std::vector<Star>& StarInitializer::getStarList() const {
+const std::vector<Star*>& StarInitializer::getStarList() const {
     return star_list_;
 }

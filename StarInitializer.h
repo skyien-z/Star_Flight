@@ -18,7 +18,7 @@ class StarInitializer {
      */
     StarInitializer(const std::string& data_filename, double fuel_amount);
 
-    const std::vector<Star>& getStarList() const;
+    const std::vector<Star*>& getStarList() const;
     const std::unordered_map<std::string, Star*> GetNameToStarPtr();
 
   private:
@@ -36,13 +36,13 @@ class StarInitializer {
      * @param star_2 second star to compute distance from
      * @return double that is the distance between the stars
      */
-    double GetDistanceBetweenStars(const Star& star_1, const Star& star_2) const;
+    double GetDistanceBetweenStars(Star*& star_1, Star*& star_2) const;
     
     /**
      * @brief Adds each star's neighbors to its neighboring stars list
      */
     void AddStarNeighborsToStarObjects();
 
-    std::vector<Star> star_list_;
+    std::vector<Star*> star_list_;
     double fuel_amount_;
 };

@@ -26,7 +26,7 @@ std::vector<Star*> BFS::StarTraversal(Star* start) { //standard BFS algorithm us
 }
 
 
-std::vector<Star*> BFS::GraphTraversal(const std::vector<Star> nodeList) {// call bfs small on every vertex
+std::vector<Star*> BFS::GraphTraversal(const std::vector<Star>& nodeList) {// call bfs small on every vertex
     std::vector<Star*> starList; //list of Star pointers
     std::vector<Star> copyList = nodeList; //copy of nodeList being passed
     std::unordered_set<int> visitedList; //keep track of visited Stars by ID

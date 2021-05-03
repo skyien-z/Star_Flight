@@ -65,3 +65,23 @@ Week 2:
             Future Goals:
                 3. Write ReadMe.md
                 4. Comment each class and function
+
+Week 3:
+    5/2/21
+        To do this meeting: 
+            1. Work together to implement main
+            2. Delegate the documentation tasks for next week
+
+        Completed since the last meeting:
+            1. Wrote Visualizer class and added StarInitializer and Star comments (Charles and Kylie)
+            2. Wrote the BFS algorithm unit tests and added BFS comments (Keesan and Sriram)
+
+        To do for the next meeting:
+            1. Polish up Visualizer implementation and design (Charles and Kylie)
+            2. 
+
+            Future Goals:
+                1. Write ReadMe.md
+                2. Comment each class and function/Code review stuff
+                3. 2 page presentation (probably drawing same infor from ReadMe)
+                4. Organize Presentation and take video
