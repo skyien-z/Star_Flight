@@ -6,14 +6,10 @@ Visualizer::Visualizer(const std::vector<Star*>& stars,
     XY_size_Z_ = new PNG(EDGE_, EDGE_);
     XZ_size_Y_ = new PNG(EDGE_, EDGE_);
     YZ_size_X_ = new PNG(EDGE_, EDGE_);
-
+    
     for (const string & name: names_in_path) {
         name_in_path_map_[name] = true;
     }
-}
-
-void Visualizer::CreateSnapshot(double multiplier) {
-    multiplier += 2;
 }
 
 // (0, 0) in Cartesian is (EDGE_/2, EDGE_/2)
@@ -86,35 +82,29 @@ PNG* Visualizer::GetYZSizeX(double multiplier) {
     return YZ_size_X_;
 }
 
-Visualizer::~Visualizer() {
-    delete XY_size_Z_;
-    delete XZ_size_Y_;
-    delete YZ_size_X_;
-}
-
 void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val,
  int radius, bool is_in_astar_path) {
-    // @TODO edge case of x at edge of image
     for (int x = x_axis_png_val - radius; x < x_axis_png_val + radius; x++) {
         if (is_in_astar_path) {
             ColorPixelGreen(star_ptr->getPixel(x, y_axis_png_val));
         } else {
-            ColorPixelBlack(star_ptr->getPixel(x, y_axis_png_val));
+            ColorPixelWhite(star_ptr->getPixel(x, y_axis_png_val));
         }
     }
 
     for (int y = y_axis_png_val - radius; y < y_axis_png_val + radius; y++) {
         if (is_in_astar_path) {
-        ColorPixelGreen(star_ptr->getPixel(x_axis_png_val, y));
+            ColorPixelGreen(star_ptr->getPixel(x_axis_png_val, y));
         } else {
-            ColorPixelBlack(star_ptr->getPixel(x_axis_png_val, y));
+            ColorPixelWhite(star_ptr->getPixel(x_axis_png_val, y));
         }
     }
  }
 
- void Visualizer::ColorPixelBlack(HSLAPixel & pixel) {
-    pixel.h = 0;
-    pixel.s = 0;
+ void Visualizer::ColorPixelWhite(HSLAPixel & pixel) {
+    if (pixel.h != 0) {
+        return; // Do not override stars in path; the black background has h = 0
+    }
     pixel.l = 1;
     pixel.a = 1;
  }
@@ -125,3 +115,43 @@ void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val
     pixel.l = 0.5;
     pixel.a = 0.9;
  }
+
+ void Visualizer::ColorPixelGold(HSLAPixel & pixel) {
+    pixel.h = 60;
+    pixel.s = 1;
+    pixel.l = 0.5;
+    pixel.a = 1;
+ }
+
+ Visualizer::~Visualizer() {
+    delete XY_size_Z_;
+    delete XZ_size_Y_;
+    delete YZ_size_X_;
+}
+
+Visualizer::Visualizer(const Visualizer& other_visualizer) {
+    __copy(other_visualizer);
+}
+
+const Visualizer & Visualizer::operator=(const Visualizer& other_visualizer) {
+    delete XY_size_Z_;
+    delete XZ_size_Y_;
+    delete YZ_size_X_;
+
+    __copy(other_visualizer);
+    return *this;
+}
+
+void Visualizer::__copy(const Visualizer& other_visualizer) {
+    stars_ = other_visualizer.stars_;
+    name_in_path_map_ = other_visualizer.name_in_path_map_;
+
+    XY_size_Z_ = new PNG(other_visualizer.EDGE_, other_visualizer.EDGE_);
+    *XY_size_Z_ = *other_visualizer.XY_size_Z_;
+
+    XZ_size_Y_ = new PNG(other_visualizer.EDGE_, other_visualizer.EDGE_);
+    *XZ_size_Y_ = *other_visualizer.XZ_size_Y_;
+
+    YZ_size_X_ = new PNG(other_visualizer.EDGE_, other_visualizer.EDGE_);
+    *YZ_size_X_ = *other_visualizer.YZ_size_X_;
+}

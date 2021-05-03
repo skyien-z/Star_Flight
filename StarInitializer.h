@@ -26,7 +26,7 @@ class StarInitializer {
 
     StarInitializer(const StarInitializer& other_star_initializer);
 
-    void operator=(const StarInitializer& other_star_initializer);
+    const StarInitializer& operator=(const StarInitializer& other_star_initializer);
 
   private:
     /**

@@ -14,13 +14,15 @@ class Visualizer {
                    const std::vector<std::string> &names_in_path);
 
         // allow user to choose how "zoomed-in" they want their perspective of the stars to be
-        void CreateSnapshot(double multiplier);
-
         PNG* GetXYSizeZ(double multiplier);
 
         PNG* GetXZSizeY(double multiplier);
         
         PNG* GetYZSizeX(double multiplier);
+
+        Visualizer(const Visualizer& other_visualizer);
+
+        const Visualizer & operator=(const Visualizer& other_visualizer);
 
         ~Visualizer();
 
@@ -36,9 +38,11 @@ class Visualizer {
 
         std::pair<int, int> CartesianToPNGCoordinates(int x, int y);
         
-        void Create2DPNG(PNG* png_to_initialize);
-
         void DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val, int radius, bool is_in_astar_path);
-        void ColorPixelBlack(HSLAPixel & pixel);
+
+        void ColorPixelWhite(HSLAPixel & pixel);
         void ColorPixelGreen(HSLAPixel & pixel);
+        void ColorPixelGold(HSLAPixel & pixel);
+
+        void __copy(const Visualizer& other_visualizer);
 };

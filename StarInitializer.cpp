@@ -97,7 +97,7 @@ StarInitializer::StarInitializer(const StarInitializer& other_star_initializer) 
     __copy(other_star_initializer);
 }
 
-void StarInitializer::operator=(const StarInitializer& other_star_initializer) {
+const StarInitializer & StarInitializer::operator=(const StarInitializer& other_star_initializer) {
     for (Star*& star: star_list_) {
         delete star;
     }
@@ -105,4 +105,6 @@ void StarInitializer::operator=(const StarInitializer& other_star_initializer) {
     star_list_.clear();
     name_to_star_ptr.clear();
     __copy(other_star_initializer);
+
+    return *this;
 }
