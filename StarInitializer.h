@@ -19,9 +19,14 @@ class StarInitializer {
     StarInitializer(const std::string& data_filename, double fuel_amount);
 
     const std::vector<Star*>& getStarList() const;
-    const std::unordered_map<std::string, Star*> GetNameToStarPtr();
 
     const std::unordered_map<std::string, Star*> GetNameToStarPtr();
+
+    ~StarInitializer();
+
+    StarInitializer(const StarInitializer& other_star_initializer);
+
+    void operator=(const StarInitializer& other_star_initializer);
 
   private:
     /**
@@ -48,4 +53,6 @@ class StarInitializer {
     std::vector<Star*> star_list_;
     double fuel_amount_;
     std::unordered_map<std::string, Star*> name_to_star_ptr;
+
+    void __copy(const StarInitializer& other_star_initializer);
 };

@@ -34,7 +34,7 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
         data_stream >> z;
         data_stream.get();
 
-        star_list_.push_back(&Star(id, proper, x, y, z));
+        star_list_.push_back(new Star(id, proper, x, y, z));
     }
 }
 
@@ -50,7 +50,7 @@ void StarInitializer::AddStarNeighborsToStarObjects() {
             double distance_apart = GetDistanceBetweenStars(this_star, star_to_compare);
 
             if (distance_apart <= fuel_amount_) {
-                this_star->AddNeighboringStar(&star_to_compare, distance_apart);
+                this_star->AddNeighboringStar(star_to_compare, distance_apart);
             }
         }
     }
@@ -72,3 +72,26 @@ const std::vector<Star*>& StarInitializer::getStarList() const {
 const std::unordered_map<std::string, Star*> StarInitializer::GetNameToStarPtr() {
     return name_to_star_ptr;
 } 
+
+StarInitializer::~StarInitializer() {
+    for (Star*& star: star_list_) {
+        delete star;
+    }
+}
+
+
+StarInitializer::StarInitializer(const StarInitializer& other_star_initializer) {
+    fuel_amount_ = other_star_initializer.fuel_amount_;
+
+    std::vector<Star*> other_stars = other_star_initializer.star_list_;
+    for (int i = 0; i < other_stars.size(); i++) {
+        Star* new_star_ptr = new Star(other_stars[i]->GetStarId(), other_stars[i]->GetStarName(),
+        other_stars[i]->GetX(), other_stars[i]->GetY(), other_stars[i]->GetZ());
+
+        star_list_.push_back(new_star_ptr);
+    }
+
+    AddStarNeighborsToStarObjects();
+}
+
+void StarInitializer::operator=(const StarInitializer& other_star_initializer);

@@ -43,8 +43,7 @@ int main() {
     std::cout << "To which star do you wish to go?" << std::endl;
     std::cin >> end_star_name;
 
-    std::cout << "How much fuel can your spaceship hold? Each unit of fuel will allow you to travel " +
-    "one cartesian unit. You can refuel to max capacity at every star you reach." << std::endl;
+    std::cout << "How much fuel can your spaceship hold? Each unit of fuel will allow you to travel one cartesian unit. You can refuel to max capacity at every star you reach." << std::endl;
     std::cin >> fuel;
 
     std::cout << "We can give you a colored map of your path, how zoomed in would you like it to be?" << std::endl;

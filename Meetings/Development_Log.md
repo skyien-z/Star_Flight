@@ -80,7 +80,7 @@ Week 3:
             1. Polish up Visualizer implementation and design (Charles and Kylie)
             2. Start up the write-up (ReadMe.md and 2 page explanation) (Sriram and Keesan)
             3. Write up comments for AStar (Charles)
-            4. Write comments for Visualizer (Kylie)
+            4. Write comments for Visualizer and implement Rule of 3 in StarInitializer and Visualizer classes (Kylie)
 
             Future Goals:
                 1. Comment each class and function/Code review stuff
