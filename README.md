@@ -16,7 +16,7 @@ This will begin the input/output stream that this program uses to run its algori
 
 ## Tests
 
-Included in the ```tests``` folder are test cases that test all parts of this program. These tests either use the full dataset, subsets of the full set, or synthetic datasets to within the ```test_data``` folder to ensure that the program is working as intended.
+Included in the ```tests``` folder are test cases that test all parts of this program. These tests either use the full dataset, subsets of the full set, or synthetic datasets which are within the ```test_data``` folder to ensure that the program is working as intended.
 To run these tests, run
 ```
 make test
