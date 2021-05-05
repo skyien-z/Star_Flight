@@ -79,6 +79,16 @@ int main() {
     png_ptr_2->writeToFile("png_files/XZ_SizeY_PNG.png");
     png_ptr_3->writeToFile("png_files/YZ_SizeX_PNG.png");
 
+    std::cout << "Your journey will take you along the following stars:" << std::endl;
+    for (unsigned i = 0; i < names_in_path.size(); i++) {
+        if (i == 0) {
+            std::cout << names_in_path[i];
+        } else {
+            std::cout << ", " << names_in_path[i];
+        }
+    }
+    std::cout << std::endl;
+
     std::cout << "Your maps are prepared! Happy travels." << std::endl;
     return 0;
 }
