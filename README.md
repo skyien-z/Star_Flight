@@ -1,7 +1,7 @@
 # [PROJECT TITLE TBD]
 > Keesan Patel (kpate360), Kylie Zhang (kyliez2), Charles Shi (shi46), Sriram Sridhar (srirams5)
 
-This project uses the [HYG star database](https://github.com/astronexus/HYG-Database) dataset. The data is included in the repository and consists of the 146 named stars from the original dataset. The main C++ files that read in the data and execute the algorithms are in the main directory. The results and input will be through the console (this input/output is written in the ```main.cpp``` file) and image results will be stored in the ```png_files``` folder.
+This project uses the [HYG star database](https://github.com/astronexus/HYG-Database) dataset. The data is included in the repository, in the ```data.csv``` file and consists of the 146 named stars from the original dataset. The main C++ files that read in the data and execute the algorithms are in the main directory. The results and input will be through the console (this input/output is written in the ```main.cpp``` file) and image results will be stored in the ```png_files``` folder.
 
 ![](header.png)
 
