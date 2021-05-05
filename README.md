@@ -5,6 +5,8 @@ This project uses the [HYG star database](https://github.com/astronexus/HYG-Data
 
 ![](header.png)
 
+INSERT THUMBNAIL OF VIDEO/LINK TO VIDEO HERE
+
 ## Running the Program
 
 After the code base is loaded into the EWS system, simply run
@@ -24,3 +26,5 @@ make test
 ```
 
 ## Results Write-Up
+
+The discussion of our results is found in the [```results.md``` file](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/results.md)
