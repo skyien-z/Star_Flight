@@ -17,7 +17,7 @@ class StarInitializer {
      * @param fuel_amount fuel amount decides how many neighboring stars can be
      * reached from a given star
      */
-    StarInitializer(const std::string& data_filename, double fuel_amount);
+    StarInitializer(const std::string& data_file_name, double fuel_amount);
 
     /**
      * @brief returns list of star pointers representing all stars in the dataset
@@ -57,7 +57,7 @@ class StarInitializer {
      * 
      * @param data_filename csv data file from which to load stars
      */
-    void LoadStarsFromCSV(const std::string& data_filename);
+    void LoadStarsFromCSV(const std::string& data_file_name);
 
     /**
      * @brief Get the Distance Between Stars objects

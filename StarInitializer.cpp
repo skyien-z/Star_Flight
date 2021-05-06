@@ -2,14 +2,14 @@
 
 #include <iostream>
 
-StarInitializer::StarInitializer(const std::string& data_filename, double fuel_amount) {
+StarInitializer::StarInitializer(const std::string& data_file_name, double fuel_amount) {
     fuel_amount_ = fuel_amount;
-    LoadStarsFromCSV(data_filename);
+    LoadStarsFromCSV(data_file_name);
     AddStarNeighborsToStarObjects();
 }
 
-void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
-    std::ifstream data_stream(data_filename);
+void StarInitializer::LoadStarsFromCSV(const std::string& data_file_name) {
+    std::ifstream data_stream(data_file_name);
     if (data_stream.fail()) {   
         std::cout << "The file failed to open" << std::endl;
     }
@@ -40,10 +40,10 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
 
 void StarInitializer::AddStarNeighborsToStarObjects() {
     for (Star* this_star : star_list_) {
+        // maps star name to a pointer to its address in memory
         name_to_star_ptr_map_[this_star->GetStarName()] = this_star;
         for (Star* star_to_compare : star_list_) {
-
-            if (*this_star == *star_to_compare) {
+            if (*this_star == *star_to_compare) {   // equality compared by star id
                 continue;       // Prevents star from adding itself as a neighbor
             }
 
@@ -64,33 +64,20 @@ double StarInitializer::GetDistanceBetweenStars(Star*& star_1, Star*& star_2) co
     return sqrt(delta_x + delta_y + delta_z);
 }
 
-
-const std::vector<Star*>& StarInitializer::GetStarList() const {
-    return star_list_;
-}
-
-const std::unordered_map<std::string, Star*> StarInitializer::GetNameToStarPtr() {
-    return name_to_star_ptr_map_;
-} 
-
-StarInitializer::~StarInitializer() {
-    for (Star*& star: star_list_) {
-        delete star;
-    }
-}
-
 void StarInitializer::CopyHelper(const StarInitializer& other_star_initializer) {
     fuel_amount_ = other_star_initializer.fuel_amount_;
 
+    // Initializes star_list_ for this star 
     std::vector<Star*> other_stars = other_star_initializer.star_list_;
     for (unsigned i = 0; i < other_stars.size(); i++) {
+        // allocate new memory on heap
         Star* new_star_ptr = new Star(other_stars[i]->GetStarId(), other_stars[i]->GetStarName(),
         other_stars[i]->GetX(), other_stars[i]->GetY(), other_stars[i]->GetZ());
 
         star_list_.push_back(new_star_ptr);
     }
 
-    AddStarNeighborsToStarObjects();    
+    AddStarNeighborsToStarObjects();    // Initializes name_to_star_ptr_map_ and adds neighboring stars
 }
 
 StarInitializer::StarInitializer(const StarInitializer& other_star_initializer) {
@@ -99,12 +86,26 @@ StarInitializer::StarInitializer(const StarInitializer& other_star_initializer) 
 
 const StarInitializer & StarInitializer::operator=(const StarInitializer& other_star_initializer) {
     for (Star*& star: star_list_) {
-        delete star;
+        delete star;    // deallocates all previous memory
     }
 
     star_list_.clear();
-    name_to_star_ptr_map_.clear();
-    CopyHelper(other_star_initializer);
+    name_to_star_ptr_map_.clear();  // clears class member variables
 
+    CopyHelper(other_star_initializer);     // copies StarInitializer object
     return *this;
 }
+
+StarInitializer::~StarInitializer() {
+    for (Star*& star: star_list_) {
+        delete star;
+    }
+}
+
+const std::vector<Star*>& StarInitializer::GetStarList() const {
+    return star_list_;
+}
+
+const std::unordered_map<std::string, Star*> StarInitializer::GetNameToStarPtr() {
+    return name_to_star_ptr_map_;
+} 
