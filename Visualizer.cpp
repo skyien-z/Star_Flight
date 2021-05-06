@@ -3,9 +3,9 @@
 Visualizer::Visualizer(const std::vector<Star*>& stars, 
                        const std::vector<std::string>& names_in_path) :
                        stars_(stars) {
-    XY_size_Z_ = new PNG(EDGE_, EDGE_);
-    XZ_size_Y_ = new PNG(EDGE_, EDGE_);
-    YZ_size_X_ = new PNG(EDGE_, EDGE_);
+    XY_size_Z_ = new PNG(kEdge, kEdge);
+    XZ_size_Y_ = new PNG(kEdge, kEdge);
+    YZ_size_X_ = new PNG(kEdge, kEdge);
     
     for (const string & name: names_in_path) {
         name_in_path_map_[name] = true;
@@ -14,7 +14,7 @@ Visualizer::Visualizer(const std::vector<Star*>& stars,
 
 // (0, 0) in Cartesian is (EDGE_/2, EDGE_/2)
 std::pair<int, int> Visualizer::CartesianToPNGCoordinates(int x, int y) {
-    int origin = EDGE_/2;
+    int origin = kEdge/2;
 
     return std::make_pair(origin + x, origin + y);
 }
@@ -29,8 +29,8 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
         int PNG_X = png_axis.first;
         int PNG_Y = png_axis.second;
 
-        if (PNG_X >= EDGE_ || PNG_X < 0 ||
-            PNG_Y >= EDGE_ || PNG_Y < 0) {
+        if (PNG_X >= kEdge || PNG_X < 0 ||
+            PNG_Y >= kEdge || PNG_Y < 0) {
             continue;
         }
 
@@ -50,8 +50,8 @@ PNG* Visualizer::GetXZSizeY(double multiplier) {
         int PNG_X = png_axis.first;
         int PNG_Z = png_axis.second;
 
-        if (PNG_X >= EDGE_ || PNG_X < 0 ||
-            PNG_Z >= EDGE_ || PNG_Z < 0) {
+        if (PNG_X >= kEdge || PNG_X < 0 ||
+            PNG_Z >= kEdge || PNG_Z < 0) {
             continue;
         }
 
@@ -71,8 +71,8 @@ PNG* Visualizer::GetYZSizeX(double multiplier) {
         int PNG_Y = png_axis.first;
         int PNG_Z = png_axis.second;
 
-        if (PNG_Y >= EDGE_ || PNG_Y < 0 ||
-            PNG_Z >= EDGE_ || PNG_Z < 0) {
+        if (PNG_Y >= kEdge || PNG_Y < 0 ||
+            PNG_Z >= kEdge || PNG_Z < 0) {
             continue;
         }  
 
@@ -83,9 +83,9 @@ PNG* Visualizer::GetYZSizeX(double multiplier) {
 }
 
 void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val,
- int radius, bool is_in_astar_path) {
+ int radius, bool is_in_a_star_path) {
     for (int x = x_axis_png_val - radius; x < x_axis_png_val + radius; x++) {
-        if (is_in_astar_path) {
+        if (is_in_a_star_path) {
             ColorPixelGreen(star_ptr->getPixel(x, y_axis_png_val));
         } else {
             ColorPixelWhite(star_ptr->getPixel(x, y_axis_png_val));
@@ -93,7 +93,7 @@ void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val
     }
 
     for (int y = y_axis_png_val - radius; y < y_axis_png_val + radius; y++) {
-        if (is_in_astar_path) {
+        if (is_in_a_star_path) {
             ColorPixelGreen(star_ptr->getPixel(x_axis_png_val, y));
         } else {
             ColorPixelWhite(star_ptr->getPixel(x_axis_png_val, y));
@@ -130,7 +130,7 @@ void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val
 }
 
 Visualizer::Visualizer(const Visualizer& other_visualizer) {
-    __copy(other_visualizer);
+    CopyHelper(other_visualizer);
 }
 
 const Visualizer & Visualizer::operator=(const Visualizer& other_visualizer) {
@@ -138,20 +138,20 @@ const Visualizer & Visualizer::operator=(const Visualizer& other_visualizer) {
     delete XZ_size_Y_;
     delete YZ_size_X_;
 
-    __copy(other_visualizer);
+    CopyHelper(other_visualizer);
     return *this;
 }
 
-void Visualizer::__copy(const Visualizer& other_visualizer) {
+void Visualizer::CopyHelper(const Visualizer& other_visualizer) {
     stars_ = other_visualizer.stars_;
     name_in_path_map_ = other_visualizer.name_in_path_map_;
 
-    XY_size_Z_ = new PNG(other_visualizer.EDGE_, other_visualizer.EDGE_);
+    XY_size_Z_ = new PNG(other_visualizer.kEdge, other_visualizer.kEdge);
     *XY_size_Z_ = *other_visualizer.XY_size_Z_;
 
-    XZ_size_Y_ = new PNG(other_visualizer.EDGE_, other_visualizer.EDGE_);
+    XZ_size_Y_ = new PNG(other_visualizer.kEdge, other_visualizer.kEdge);
     *XZ_size_Y_ = *other_visualizer.XZ_size_Y_;
 
-    YZ_size_X_ = new PNG(other_visualizer.EDGE_, other_visualizer.EDGE_);
+    YZ_size_X_ = new PNG(other_visualizer.kEdge, other_visualizer.kEdge);
     *YZ_size_X_ = *other_visualizer.YZ_size_X_;
 }
