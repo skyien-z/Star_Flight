@@ -103,6 +103,17 @@ class Visualizer {
 
         const int kEdge = 1000;     // constant pixel size of each PNG edge
 
+        /**
+         * @brief Converts cartesian coordinates contained by the star into
+         * PNG pixel coordinates (that are always positive) and returns PNG coordinates
+         * as a pair.
+         * 
+         * @param x Cartesian coordinate of the value on the x-axis
+         * @param y Cartesian coordinate of the value on the y-axis
+         * @return std::pair<int, int> the first value held by the pair is the PNG
+         * pixel coordinate of of the value on the x-axis, the second value is the 
+         * PNG pixel coordinate of of the value on the y-axis
+         */
         std::pair<int, int> CartesianToPNGCoordinates(int x, int y);
         
         /**
