@@ -1,7 +1,9 @@
 # [PROJECT TITLE TBD]
 > Keesan Patel (kpate360), Kylie Zhang (kyliez2), Charles Shi (shi46), Sriram Sridhar (srirams5)
 
-This project uses the [HYG star database](https://github.com/astronexus/HYG-Database) dataset. The data is included in the repository, in the ```data.csv``` file, and consists of the 146 named stars from the original dataset. The main C++ files that read in the data and execute the algorithms are in the main directory. The results and input will be through the console (this input/output is written in the ```main.cpp``` file) and image results will be stored in the ```png_files``` folder.
+This project uses the [HYG star database](https://github.com/astronexus/HYG-Database) dataset. The data is included in the repository, in the ```data.csv``` file, and consists of the 146 named stars from the original dataset. The main C++ files that read in the data and execute the algorithms are in the main directory. The results and input will be through the console (this input/output is written in the ```main.cpp``` file) and image results will be stored in the ```png_files``` folder. 
+
+Stars in the path found by A* will be rendered green while all other stars are rendered in white inside each PNG file. The star Sol, or the sun, is always rendered at the center of the PNG. Each image is plotted with the first letter of the PNG file on the x-axis and the second letter on the y-axis (for example, XZ_SizeY.png plots X on the horizontal x-axis and Z on the vertical y-axis) and the letter after "Size" (in this example, Y) is the coordinate that determines the size of the star rendering––the log of the absolute value of it is taken to ensure that the PNG can render all stars that it's asked to render appropriately.
 
 ![](header.png)
 
