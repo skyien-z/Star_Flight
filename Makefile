@@ -50,8 +50,8 @@ AStar.o: AStar.cpp AStar.h Star.h
 BFS.o: BFS.cpp BFS.h Star.h
 	$(CXX) $(CXXFLAGS) BFS.cpp
 
-test: output_msg catchmain.o StarTest.o StarInitializerTest.o AStarTest.o BFSTest.o Star.o StarInitializer.o AStar.o BFS.o
-	$(LD) catchmain.o StarTest.o StarInitializerTest.o AStarTest.o BFSTest.o Star.o StarInitializer.o AStar.o BFS.o $(LDFLAGS) -o test
+test: output_msg catchmain.o StarTest.o StarInitializerTest.o AStarTest.o BFSTest.o Star.o StarInitializer.o AStar.o BFS.o Visualizer.o VisualizerTest.o PNG.o lodepng.o HSLAPixel.o
+	$(LD) catchmain.o StarTest.o StarInitializerTest.o AStarTest.o BFSTest.o Star.o StarInitializer.o AStar.o BFS.o VisualizerTest.o Visualizer.o PNG.o lodepng.o HSLAPixel.o $(LDFLAGS) -o test
 
 catchmain.o : cs225/catch/catchmain.cpp cs225/catch/catch.hpp
 	$(CXX) $(CXXFLAGS) cs225/catch/catchmain.cpp
@@ -67,6 +67,9 @@ AStarTest.o: tests/AStarTest.cpp cs225/catch/catch.hpp AStar.cpp Star.cpp
 
 BFSTest.o: tests/BFSTest.cpp cs225/catch/catch.hpp BFS.cpp StarInitializer.cpp 
 	$(CXX) $(CXXFLAGS) tests/BFSTest.cpp
+
+VisualizerTest.o: tests/VisualizerTest.cpp cs225/catch/catch.hpp Visualizer.cpp StarInitializer.cpp cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp
+	$(CXX) $(CXXFLAGS) tests/VisualizerTest.cpp
 
 PNG.o : cs225/PNG.cpp cs225/PNG.h cs225/HSLAPixel.h cs225/lodepng/lodepng.h
 	$(CXX) $(CXXFLAGS) cs225/PNG.cpp
