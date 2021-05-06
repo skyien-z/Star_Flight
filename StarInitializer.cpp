@@ -40,7 +40,7 @@ void StarInitializer::LoadStarsFromCSV(const std::string& data_filename) {
 
 void StarInitializer::AddStarNeighborsToStarObjects() {
     for (Star* this_star : star_list_) {
-        name_to_star_ptr[this_star->GetStarName()] = this_star;
+        name_to_star_ptr_map_[this_star->GetStarName()] = this_star;
         for (Star* star_to_compare : star_list_) {
 
             if (*this_star == *star_to_compare) {
@@ -65,12 +65,12 @@ double StarInitializer::GetDistanceBetweenStars(Star*& star_1, Star*& star_2) co
 }
 
 
-const std::vector<Star*>& StarInitializer::getStarList() const {
+const std::vector<Star*>& StarInitializer::GetStarList() const {
     return star_list_;
 }
 
 const std::unordered_map<std::string, Star*> StarInitializer::GetNameToStarPtr() {
-    return name_to_star_ptr;
+    return name_to_star_ptr_map_;
 } 
 
 StarInitializer::~StarInitializer() {
@@ -79,7 +79,7 @@ StarInitializer::~StarInitializer() {
     }
 }
 
-void StarInitializer::__copy(const StarInitializer& other_star_initializer) {
+void StarInitializer::CopyHelper(const StarInitializer& other_star_initializer) {
     fuel_amount_ = other_star_initializer.fuel_amount_;
 
     std::vector<Star*> other_stars = other_star_initializer.star_list_;
@@ -94,7 +94,7 @@ void StarInitializer::__copy(const StarInitializer& other_star_initializer) {
 }
 
 StarInitializer::StarInitializer(const StarInitializer& other_star_initializer) {
-    __copy(other_star_initializer);
+    CopyHelper(other_star_initializer);
 }
 
 const StarInitializer & StarInitializer::operator=(const StarInitializer& other_star_initializer) {
@@ -103,8 +103,8 @@ const StarInitializer & StarInitializer::operator=(const StarInitializer& other_
     }
 
     star_list_.clear();
-    name_to_star_ptr.clear();
-    __copy(other_star_initializer);
+    name_to_star_ptr_map_.clear();
+    CopyHelper(other_star_initializer);
 
     return *this;
 }

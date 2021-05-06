@@ -69,7 +69,7 @@ int main() {
     AStar a_star;
     std::vector<std::string> names_in_path = a_star.findShortestPathAStar(star_star_ptr, star_end_ptr);
 
-    Visualizer path_visualizer(star_initializer.getStarList(), names_in_path);
+    Visualizer path_visualizer(star_initializer.GetStarList(), names_in_path);
 
     cs225::PNG* png_ptr_1 = path_visualizer.GetXYSizeZ(multiplier);
     cs225::PNG* png_ptr_2 = path_visualizer.GetXZSizeY(multiplier);

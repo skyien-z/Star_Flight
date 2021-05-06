@@ -10,13 +10,13 @@
 TEST_CASE("Test Reading File", "[weight=1]") {
   StarInitializer test_initializer("test_data/test_data.csv", 200);
 
-  std::vector<Star*> loaded_stars = test_initializer.getStarList();
+  std::vector<Star*> loaded_stars = test_initializer.GetStarList();
   REQUIRE(loaded_stars.size() == 5);
 }
 
 TEST_CASE("Test Loading in Correct Data", "[weight=1]") {
   StarInitializer test_initializer("test_data/test_data.csv", 200);
-  std::vector<Star*> loaded_stars = test_initializer.getStarList();
+  std::vector<Star*> loaded_stars = test_initializer.GetStarList();
 
   std::vector<int> star_ids{0, 676, 744, 1065, 2076};
   std::vector<std::string> star_names{"Sol", "Alpheratz", "Caph", "Algenib", "Ankaa"};
@@ -35,7 +35,7 @@ TEST_CASE("Test Loading in Correct Data", "[weight=1]") {
 
 TEST_CASE("Test Computing Distance Between Stars", "[weight=1]") {
   StarInitializer test_initializer("test_data/test_data.csv", 200);
-  std::vector<Star*> loaded_stars = test_initializer.getStarList();
+  std::vector<Star*> loaded_stars = test_initializer.GetStarList();
 
   std::vector<std::pair<Star*, double> > neighbors_of_sol = loaded_stars[0] -> GetNeighboringStarsList();
 
@@ -49,7 +49,7 @@ TEST_CASE("Test Computing Distance Between Stars", "[weight=1]") {
 TEST_CASE("Test that Fuel Limits Stars Found", "[weight=1]") {
   // Change fuel here
   StarInitializer test_initializer("test_data/test_data.csv", 30);
-  std::vector<Star*> loaded_stars = test_initializer.getStarList();
+  std::vector<Star*> loaded_stars = test_initializer.GetStarList();
 
   std::vector<std::pair<Star*, double> > neighbors_of_sol = loaded_stars[0] -> GetNeighboringStarsList();
 

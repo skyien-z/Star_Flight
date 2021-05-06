@@ -9,7 +9,7 @@
 
 TEST_CASE("StarTraversal Test", "[weight=1]") {
   StarInitializer test_initializer("test_data/test_data_med.csv", 35);
-  std::vector<Star*> loaded_stars = test_initializer.getStarList();
+  std::vector<Star*> loaded_stars = test_initializer.GetStarList();
   BFS traversal;
   std::vector<Star*> starTraversal = traversal.StarTraversal(loaded_stars[0]);
   std::vector<std::string> actual;
@@ -23,7 +23,7 @@ TEST_CASE("StarTraversal Test", "[weight=1]") {
 
 TEST_CASE("GraphTraversal Test", "[weight=1]") {
   StarInitializer test_initializer("data.csv", 35);
-  std::vector<Star*> loaded_stars = test_initializer.getStarList();
+  std::vector<Star*> loaded_stars = test_initializer.GetStarList();
   BFS traversal;
   std::vector<Star*> graphTraversal = traversal.GraphTraversal(loaded_stars);
   // for (auto star : graphTraversal) {
@@ -34,7 +34,7 @@ TEST_CASE("GraphTraversal Test", "[weight=1]") {
 
 TEST_CASE("canTravel Test", "[weight=1]") {
   StarInitializer test_initializer("test_data/test_data_med.csv", 35);
-  std::vector<Star*> loaded_stars = test_initializer.getStarList();
+  std::vector<Star*> loaded_stars = test_initializer.GetStarList();
   BFS traversal;
   bool test1 = traversal.canTravel(loaded_stars[0],loaded_stars[1]);
   REQUIRE(test1);
