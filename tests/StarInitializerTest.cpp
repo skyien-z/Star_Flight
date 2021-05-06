@@ -2,9 +2,7 @@
 #include "../cs225/catch/catch.hpp"
 
 /**
- * @brief Use fully qualified file name to load in data––this test data file
- * path only works on mine (Kylie's) local machine
- * 
+ * @brief Destructor functionality was tested by running valgrind on "./test" executable on EWS
  */
 
 TEST_CASE("Test Reading File", "[weight=1]") {
