@@ -23,7 +23,14 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
         int scaled_x = stars_[i]->GetX() * multiplier;
         int scaled_y = stars_[i]->GetY() * multiplier;
-        int size = std::log(std::abs(stars_[i]->GetZ())) * multiplier;
+        int size = stars_[i]->GetZ();
+
+        // ensures that we don't take the log of 0
+        if (size == 0) {   
+            size = 1;
+        } else {
+            size = std::log(std::abs(size)) * multiplier;
+        }
 
         std::pair<int, int> png_axis = CartesianToPNGCoordinates(scaled_x, scaled_y);
         int PNG_X = png_axis.first;
@@ -35,6 +42,7 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
         }
 
         bool star_in_path = name_in_path_map_[stars_[i]->GetStarName()];
+
         DrawStar(XY_size_Z_, PNG_X, PNG_Y, size, star_in_path);
     }
     return XY_size_Z_;
@@ -43,8 +51,15 @@ PNG* Visualizer::GetXYSizeZ(double multiplier) {
 PNG* Visualizer::GetXZSizeY(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
         int scaled_x = stars_[i]->GetX() * multiplier;
-        int size = std::log(std::abs(stars_[i]->GetY())) * multiplier;
         int scaled_z = stars_[i]->GetZ() * multiplier;
+        int size = stars_[i]->GetY();
+
+        // ensures that we don't take the log of 0
+        if (size == 0) {   
+            size = 1;
+        } else {
+            size = std::log(std::abs(size)) * multiplier;
+        }
 
         std::pair<int, int> png_axis = CartesianToPNGCoordinates(scaled_x, scaled_z);
         int PNG_X = png_axis.first;
@@ -63,9 +78,16 @@ PNG* Visualizer::GetXZSizeY(double multiplier) {
 
 PNG* Visualizer::GetYZSizeX(double multiplier) {
     for (unsigned i = 0; i <stars_.size(); i++) {
-        int size = std::log(std::abs(stars_[i]->GetX())) * multiplier;
         int scaled_y = stars_[i]->GetY() * multiplier;
         int scaled_z = stars_[i]->GetZ() * multiplier;
+        int size = stars_[i]->GetX();
+
+        // ensures that we don't take the log of 0
+        if (size == 0) {   
+            size = 1;
+        } else {
+            size = std::log(std::abs(size)) * multiplier;
+        }
 
         std::pair<int, int> png_axis = CartesianToPNGCoordinates(scaled_y, scaled_z);
         int PNG_Y = png_axis.first;

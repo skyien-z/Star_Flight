@@ -25,3 +25,5 @@
  INSERT PNG FILES AND TERMINAL SCREENSHOTs BELOW
 
  BFS confirmed that there was a path to Menkar using 35 units of fuel. A* outputted the path, and the Visualizer displayed the data in PNG format. Thus, it is safe to conclude that our algorithms work as expected.
+
+// Write about pixels being cut off
