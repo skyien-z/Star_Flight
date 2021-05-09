@@ -85,3 +85,20 @@ Week 3:
             Future Goals:
                 1. Comment each class and function/Code review stuff
                 2. Organize Presentation and take video
+
+Week 4:
+    5/8/21
+        To do this meeting:
+            1. Create and finish presentation slides
+            2. Decide video organization
+
+        Completed since the last meeting:
+            1. Finish up Visualizer implementation and design (Charles and Kylie)
+            2. Start up the write-up (ReadMe.md and 2 page explanation) (Sriram and Keesan)
+            3. Write up comments for A* (Charles)
+            4. Write comments for Visualizer and implement Rule of 3 in StarInitializer and Visualizer classes (Kylie)
+        
+        To do for next week:
+            1. Record videos individually and compile them together
+                a. Videos will be voiceovers of the presentation slides and a live demo of main
+            2. Polish up ReadMe.md and results.md

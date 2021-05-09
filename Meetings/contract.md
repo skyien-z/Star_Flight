@@ -1,5 +1,5 @@
 Communication:
-    1. Team Meetings: We will have weekly team meetings on Monday from 5:00PM CST to 8:00 PM CST and Wednesday from 6:00 PM CST to 8:00 PM CST. We will meet on Discord and keep a shared folder on Google Drive to store/share information amongst ourselves.
+    1. Team Meetings: We will have weekly team meetings on Monday from 5:00PM CST to 8:00 PM CST and Wednesday from 6:00 PM CST to 8:00 PM CST. We will meet on Discord and keep a shared folder on Google Drive to store/share information amongst ourselves. This meeting schedule can be flexible depending on our weekly obligations, but we will meet for at least one meeting each up.
     2. Assistance: We have a Discord chat, and teammates can ask questions. The expected response
     time to inquires will be an hour. If it's longer than that, contact by email or further direct
     messaging can be used.

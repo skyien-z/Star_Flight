@@ -144,13 +144,6 @@ class Visualizer {
         */
         void ColorPixelGreen(HSLAPixel & pixel);
 
-      /**
-        * @brief Renders a given pixel gold.
-        * 
-        * @param pixel pixel passed by reference to turn gold
-        */
-        void ColorPixelGold(HSLAPixel & pixel);
-
        /**
         * @brief Helper function for copying another visualizer
         * object to this one.

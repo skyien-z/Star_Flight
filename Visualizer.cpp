@@ -138,13 +138,6 @@ void Visualizer::DrawStar(PNG*& star_ptr, int x_axis_png_val, int y_axis_png_val
     pixel.a = 0.9;
  }
 
- void Visualizer::ColorPixelGold(HSLAPixel & pixel) {
-    pixel.h = 60;
-    pixel.s = 1;
-    pixel.l = 0.5;
-    pixel.a = 1;
- }
-
  Visualizer::~Visualizer() {
     delete XY_size_Z_;
     delete XZ_size_Y_;
