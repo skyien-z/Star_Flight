@@ -14,13 +14,15 @@
  Our program's methods are successful and this can be seen by inputting valid parameters and seeing the results. These results are essentially validated by the tests
  in the ```tests``` folder, which can be examined to see how they individually test each class/function. For each class, we created smaller datasets and made sure that each algorithm ran as expected on them, so we can reasonably conclude that the algorithm runs as expected on the full dataset. Below is a screenshot of the output when running the tests.
  
- INSERT CONSOLE SCREENSHOT
+ ![Tests](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/demo_png_files/tests_pass.png?raw=true)
  
  Furthermore, we can see an example of how to use our program to find the shortest path from Sol to Menkar with 35 units of fuel:
  
- ![alt text](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/demo_png_files/sol_menkar_35_demo.gif?raw=true)
+ ![demo gif](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/demo_png_files/sol_menkar_35fuel_demo.gif?raw=true)
 
- INSERT PNG FILES AND TERMINAL SCREENSHOTs BELOW
+ ![XY_Size_Z](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/demo_png_files/XY_SizeZ.png?raw=true)
+ ![XZ_Size_Y](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/demo_png_files/XZ_SizeY.png?raw=true)
+ ![YZ_Size_X](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/demo_png_files/YZ_SizeX.png?raw=true)
 
  BFS confirmed that there was a path to Menkar using 35 units of fuel. A* outputted the path, and the Visualizer displayed the data in PNG format. Thus, it is safe to conclude that our algorithms work as expected.
 
