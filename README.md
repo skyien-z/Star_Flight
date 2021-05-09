@@ -29,4 +29,4 @@ make test
 
 ## Results Write-Up
 
-The discussion of our results is found in the [```results.md``` file](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/results.md)
+The discussion of our results is found in [```results.md```](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/results.md)
