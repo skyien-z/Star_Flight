@@ -8,10 +8,6 @@
  2. Results Locations
  
  The dataset used can be found in the ```data.csv``` file and the output path is both printed to the console and saved as images in the ```png_files``` folder.
- Example images can be found there and will not be inserted here. Below is a screenshot of the console output after inputting [STAR NAME] as the start point and [STAR NAME]
- as the end point.
- 
- INSERT CONSOLE SCREENSHOT
  
  3. Results Discussion
  
@@ -20,7 +16,9 @@
  
  INSERT CONSOLE SCREENSHOT
  
- Furthermore, we can see our program outputting the shortest path from Sol to Menkar with 35 units of fuel:
+ Furthermore, we can see an example of how to use our program to find the shortest path from Sol to Menkar with 35 units of fuel:
+ 
+ ![alt text](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/demo_png_files/sol_menkar_35_demo.gif?raw=true)
 
  INSERT PNG FILES AND TERMINAL SCREENSHOTs BELOW
 
