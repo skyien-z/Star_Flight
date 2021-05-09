@@ -16,7 +16,7 @@ After the code base is loaded into the EWS system, simply run
 make
 ./main
 ```
-This will begin the input/output stream that this program uses to run its algorithms. Finding the shortest path between stars will require the names of both stars. This input is case sensitive and will require restarting the program if the input is incorrect. The names can be found in the ```data.csv``` file.
+This will begin the input/output stream that this program uses to run its algorithms. Finding the shortest path between stars will require the names of both stars. This input is case sensitive and will require restarting the program if the input is incorrect. The names can be found in the ```data.csv``` file. The inputs for the fuel amount and image multiplier are assumed to be valid numbers and not strings. The program will require restarting if the numerical inputs are invalid.
 
 ## Tests
 
