@@ -26,4 +26,4 @@
 
  BFS confirmed that there was a path to Menkar using 35 units of fuel. A* outputted the path, and the Visualizer displayed the data in PNG format. Thus, it is safe to conclude that our algorithms work as expected.
 
-// Write about pixels being cut off
+There's one thing to note: the visualizer will not display stars with their centers outside of the scope of the PNG, but some pixels may be cut off from the PNG if the center+radius exceeds the limits of the PNG file––the terminal will output whether or not pixels were cut out. This is not a cause for concern.

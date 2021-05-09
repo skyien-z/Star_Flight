@@ -99,6 +99,6 @@ Week 4:
             4. Write comments for Visualizer and implement Rule of 3 in StarInitializer and Visualizer classes (Kylie)
         
         To do for next week:
-            1. Record videos individually and compile them together
+            1. Record videos individually by Monday evening and compile them together (Everybody––Sriram will compile)
                 a. Videos will be voiceovers of the presentation slides and a live demo of main
             2. Polish up ReadMe.md and results.md
