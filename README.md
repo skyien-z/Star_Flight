@@ -30,3 +30,5 @@ make test
 ## Results Write-Up
 
 The discussion of our results is found in [```results.md```](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/results.md)
+
+Our development log for this project can be found in [```Development_Log.md```](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/Development_Log.md)
