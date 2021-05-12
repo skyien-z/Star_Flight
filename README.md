@@ -5,9 +5,8 @@ This project uses the [HYG star database](https://github.com/astronexus/HYG-Data
 
 Stars in the path found by A* will be rendered green while all other stars are rendered in white inside each PNG file. The star Sol, or the sun, is always rendered at the center of the PNG. Each image is plotted with the first letter of the PNG file on the x-axis and the second letter on the y-axis (for example, XZ_SizeY.png plots X on the horizontal x-axis and Z on the vertical y-axis) and the letter after "Size" (in this example, Y) is the coordinate that determines the size of the star rendering––the log of the absolute value of it is taken to ensure that the PNG can render all stars that it's asked to render appropriately.
 
-![](header.png)
-
-INSERT THUMBNAIL OF VIDEO/LINK TO VIDEO HERE
+[![video](https://github-dev.cs.illinois.edu/cs225-sp21/kpate360-kyliez2-shi46-srirams5/blob/master/Meetings/demo_png_files/title_slide.png)](https://drive.google.com/file/d/1Cuc4S-LdcbPpMrURnZl69kNwxvvccdn9/view?usp=sharing)
+> Click on the image to watch our video presentation
 
 ## Running the Program
 
